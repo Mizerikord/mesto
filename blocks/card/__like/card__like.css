@@ -1,0 +1,8 @@
+.card__like{
+    content: url(../../../images/like-disable.svg);
+    height: 19px;
+    margin-right: 20px;
+    transition-property: opacity;
+    transition-duration: 0.5s;
+    cursor: pointer;
+}

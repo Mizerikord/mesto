@@ -1,0 +1,25 @@
+.profile__theme{
+    margin: 7px 0 0;
+    font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+@media screen and (max-width: 912px) {
+    .profile__theme{
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 613px ) {
+    .profile__theme{
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+        margin: 9px 0 0 0;
+    }
+}

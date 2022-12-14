@@ -1,0 +1,11 @@
+.card__item{
+    border: none;
+    border-radius: 10px;
+    max-width: 282px;
+    max-height: 361px;
+    background-color: #fff;
+    color: #000000;
+    display: inline-block;
+    overflow: hidden;
+    box-sizing: border-box;
+}

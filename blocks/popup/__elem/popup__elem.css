@@ -1,0 +1,16 @@
+.popup__elem{
+    min-width: 358px;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    outline:none;
+    padding: 0;
+    padding-bottom: 13px;
+}
+
+@media screen and (max-width: 912px) {
+    .popup__elem{
+        min-width: 238px;
+    }
+}
