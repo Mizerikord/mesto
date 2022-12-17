@@ -9,7 +9,7 @@
 </head>
 <body class="page">
     <header class="header">
-        <img src="images/logo.svg" alt="" class="header__logo">
+        <img src="images/logo.svg" alt="Место" class="header__logo">
     </header>
     <main class="main">
         <section class="profile">
@@ -18,56 +18,56 @@
                 <div class="profile__name-container">
                     <div class="profile__autor-editor">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
-                        <div class="profile__editor blackout"></div>
+                        <button type="button" class="profile__editor blackout">
+                            <img src="./images/edit-pen.svg" alt="Изменить профиль">
+                        </button>
                     </div>
                     <p class="profile__theme">Исследователь океана</p>
                 </div>
             </div>
-            <div class="profile__insert">
-                <img src="./images/plus.svg" alt="Добавить элемент" class="profile__add-item blackout">
-            </div>
+            <button type="button" class="profile__insert blackout" aria-label="Добавить место"></button>
         </section>
-        <section class="card">
-            <ul class="card__list">
-                <li class="card__item">
+        <section class="cards">
+            <ul class="cards__list">
+                <li class="card">
                     <img src="./images/karachaevsk.jpg" alt="Карачаевск" class="card__img">
                     <div class="card__name">
                         <h2 class="card__title">Карачаевск</h2>
-                        <div class="card__like blackout"></div>
+                        <button type="button" class="card__like"></button>
                     </div></li>
-                <li class="card__item">
+                <li class="card">
                     <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="card__img">
                 <div class="card__name">
                     <h2 class="card__title">Гора Эльбрус</h2>
-                    <div class="card__like blackout"></div>
+                    <button type="button" class="card__like"></button>
                 </div>
                 </li>
-                <li class="card__item">
+                <li class="card">
                     <img src="./images/dombai.jpg" alt="Домбай" class="card__img">
                     <div class="card__name">
                         <h2 class="card__title">Домбай</h2>
-                        <div class="card__like blackout"></div>
+                        <button type="button" class="card__like"></button>
                     </div>
                 </li>
-                <li class="card__item">
+                <li class="card">
                     <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="card__img">
                     <div class="card__name">
                         <h2 class="card__title">Гора Эльбрус</h2>
-                        <div class="card__like blackout"></div>
+                        <button type="button" class="card__like"></button>
                     </div>
                 </li>
-                <li class="card__item">
+                <li class="card">
                     <img src="./images/dombai.jpg" alt="Домбай" class="card__img">
                     <div class="card__name">
                         <h2 class="card__title">Домбай</h2>
-                        <div class="card__like blackout"></div>
+                        <button type="button" class="card__like"></button>
                     </div>
                 </li>
-                <li class="card__item">
+                <li class="card">
                     <img src="./images/karachaevsk.jpg" alt="Карачаево-Черкесск" class="card__img">
                     <div class="card__name">
                         <h2 class="card__title">Карачаево-Черкесск</h2>
-                        <div class="card__like blackout"></div>
+                        <button type="button" class="card__like"></button>
                     </div>
                 </li>
             </ul>
@@ -78,12 +78,14 @@
     </footer>
     <section class="popup popup_opened">
         <div class="popup__container">
-            <img src="./images/close-icon.svg" alt="закрыть окно редактирвоания" class="popup__disable blackout">
+            <button type="reset" class="popup__disable blackout">
+                <img src="./images/close-icon.svg" alt="закрыть окно редактирвоания">
+            </button>
             <h2 class="popup__header">Редактировать профиль</h2>
-            <form action="#" class="popup__form">
-                <input type="text" value="Жак-Ив Кусто" class="popup__elem popup__name" placeholder="Your name">
-                <input type="text" value="Исследователь океана" class="popup__elem popup__theme" placeholder="your hobby">
-                <input type="button" value="Сохранить" class="popup__save-button">
+            <form action="#" class="popup__form" name="попап">
+                <input type="text" value="Жак-Ив Кусто" class="popup__elem popup__elem_input-name" placeholder="Ваше имя" name="Имя">
+                <input type="text" value="Исследователь океана" class="popup__elem popup__elem_input-theme" placeholder="Ваша деятельность" name="Деятельность">
+                <input type="submit" value="Сохранить" class="popup__save-button" name="кнопка-сохранить">
             </form>
         </div>
     </section>

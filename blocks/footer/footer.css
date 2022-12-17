@@ -4,6 +4,7 @@
     justify-content: flex-start;
     max-width: 880px;
     width: 100%;
+    flex-shrink: 0;
 }
 
 @media screen and (max-width: 912px) {
@@ -15,7 +16,5 @@
 @media screen and (max-width: 613px ) {
     .footer{
         margin: 48px 0 36px;
-        display: flex;
-        justify-content: flex-start;
     }
 }
