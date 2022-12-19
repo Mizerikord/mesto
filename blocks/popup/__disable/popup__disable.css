@@ -1,4 +1,9 @@
 .popup__disable{
+    background-image: url(../../../images/close-icon.svg);
+    background-color: #000000;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     width: 32px;
     height: 32px;
     position: absolute;
@@ -7,7 +12,6 @@
     transition-property: opacity;
     transition-duration: 0.5s;
     cursor: pointer;
-    background: none;
     border: none;
     padding: 0;
 }

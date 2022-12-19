@@ -6,7 +6,7 @@
     align-items: center;
     cursor: pointer;
     background-image: url(../../../images/plus.svg);
-    background-color: #000000;
+    background-color: rgba(0, 0, 0, 0);
     background-repeat: no-repeat;
     background-position: center;
     transition-property: opacity;

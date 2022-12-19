@@ -1,6 +1,6 @@
 .card__like{
     background-image: url(../../../images/like-disable.svg);
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0);
     background-repeat: no-repeat;
     background-size: cover;
     border: none;
