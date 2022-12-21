@@ -1,13 +1,12 @@
 .profile__editor{
     display: inline-block;
     background-image: url(../../../images/edit-pen.svg);
-    background-color: #000000;
+    background-color: rgba(0, 0, 0, 0);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 10px;
     background-position: center;
-    border: 1px solid #ffffff;
-    box-sizing: border-box;
-    margin-left: 17px;
+    border: 1px solid #FFFFFF;
+    margin-left: 18px;
     margin-bottom: 9px;
     width: 24px;
     height: 24px;
@@ -21,6 +20,7 @@
 
 @media screen and (max-width: 912px) {
     .profile__editor{
+        background-size: 7.5px;
         margin-left: 10px;
         margin-bottom: 6px;
         width: 18px;

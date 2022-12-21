@@ -6,7 +6,7 @@
     background-color: #ffffff;
     min-width: 430px;
     z-index: 1;
-    position: fixed;
+    position: relative;
 }
 
 @media screen and (max-width: 912px) {

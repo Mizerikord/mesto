@@ -1,6 +1,6 @@
 .popup__disable{
     background-image: url(../../../images/close-icon.svg);
-    background-color: #000000;
+    background-color: rgba(0, 0, 0, 0);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
