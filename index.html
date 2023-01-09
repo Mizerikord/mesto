@@ -25,66 +25,59 @@
             </div>
             <button type="button" class="profile__insert blackout" aria-label="Добавить место"></button>
         </section>
-        <section class="cards">
+        <section class="cards" aria-label="Карточки мест">
             <ul class="cards__list">
-                <li class="card">
-                    <img src="./images/karachaevsk.jpg" alt="Карачаевск" class="card__img">
-                    <div class="card__name">
-                        <h2 class="card__title">Карачаевск</h2>
-                        <button type="button" class="card__like" aria-label="поставить лайк"></button>
-                    </div></li>
-                <li class="card">
-                    <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="card__img">
-                <div class="card__name">
-                    <h2 class="card__title">Гора Эльбрус</h2>
-                    <button type="button" class="card__like" aria-label="поставить лайк"></button>
-                </div>
-                </li>
-                <li class="card">
-                    <img src="./images/dombai.jpg" alt="Домбай" class="card__img">
-                    <div class="card__name">
-                        <h2 class="card__title">Домбай</h2>
-                        <button type="button" class="card__like" aria-label="поставить лайк"></button>
-                    </div>
-                </li>
-                <li class="card">
-                    <img src="./images/elbrus.jpg" alt="Гора Эльбрус" class="card__img">
-                    <div class="card__name">
-                        <h2 class="card__title">Гора Эльбрус</h2>
-                        <button type="button" class="card__like" aria-label="поставить лайк"></button>
-                    </div>
-                </li>
-                <li class="card">
-                    <img src="./images/dombai.jpg" alt="Домбай" class="card__img">
-                    <div class="card__name">
-                        <h2 class="card__title">Домбай</h2>
-                        <button type="button" class="card__like" aria-label="поставить лайк"></button>
-                    </div>
-                </li>
-                <li class="card">
-                    <img src="./images/karachaevsk.jpg" alt="Карачаево-Черкесск" class="card__img">
-                    <div class="card__name">
-                        <h2 class="card__title">Карачаево-Черкесск</h2>
-                        <button type="button" class="card__like" aria-label="поставить лайк"></button>
-                    </div>
-                </li>
+                <template id="card">
+                    <li class="card">
+                        <button type="button" class="card__delete blackout" aria-label="удалить карточку"></button>
+                        <img src="#" alt="Здесь должна быть картинка" class="card__img">
+                        <div class="card__name">
+                            <h2 class="card__title"></h2>
+                            <button type="button" class="card__like" aria-label="сохранить"></button>
+                        </div>
+                    </li>
+                </template> 
             </ul>
         </section>
     </main>
     <footer class="footer">
         <p lang="en" class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
-    <section class="popup popup_opened">
-        <div class="popup__container">
-            <button type="button" class="popup__disable blackout" aria-label="закрыть редактор профиля"></button>
-            <h2 class="popup__header">Редактировать профиль</h2>
-            <form action="#" class="popup__form" name="попап">
-                <input type="text" value="Жак-Ив Кусто" class="popup__elem popup__elem_input_name" placeholder="Ваше имя" name="Имя">
-                <input type="text" value="Исследователь океана" class="popup__elem popup__elem_input_theme" placeholder="Ваша деятельность" name="Деятельность">
-                <input type="submit" value="Сохранить" class="popup__save-button" name="кнопка-сохранить">
-            </form>
-        </div>
-    </section>
+    <template id="popup-profile">
+        <section class="popup popup_opened">
+            <div class="popup__container">
+                <button type="button" class="popup__disable blackout" aria-label="закрыть редактор профиля"></button>
+                <h2 class="popup__header">Редактировать профиль</h2>
+                <form action="#" class="popup__form" name="попап">
+                    <input type="text" value="Ваше имя" placeholder="Ваше имя" class="popup__elem popup__elem_input_name" name="Имя">
+                    <input type="text" value="Ваша деятельность" placeholder="Ваша деятельность" class="popup__elem popup__elem_input_theme" name="Деятельность">
+                    <input type="submit" value="Сохранить" class="popup__save-button" name="кнопка-сохранить">
+                </form>
+            </div>
+        </section>
+    </template>
+    <template id="popup-insert">
+        <section class="popup popup_opened">
+            <div class="popup__container">
+                <button type="button" class="popup__disable blackout" aria-label="закрыть редактор профиля"></button>
+                <h2 class="popup__header">Новое место</h2>
+                <form action="#" class="popup__form" name="попап">
+                    <input type="text" value="Название" placeholder="Название" class="popup__elem popup__elem_input_name" name="Имя">
+                    <input type="text" value="Ссылка на картинку" placeholder="Ссылка на картинку" class="popup__elem popup__elem_input_theme" name="Деятельность">
+                    <input type="submit" value="Сохранить" class="popup__save-button" name="кнопка-сохранить">
+                </form>
+            </div>
+        </section>
+    </template>
+    <template id="popup-cover">
+        <section class="popup popup_opened">
+            <div class="popup__cover">
+                <button type="button" class="popup__disable blackout" aria-label="закрыть картинку"></button>
+                <img src="#" alt="Некая картинка" class="popup__cover-img">
+                <p class="popup__text"></p>
+            </div>
+        </section>
+    </template>
     <script src="./pages/script.js"></script>
 </body>
 </html>

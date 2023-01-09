@@ -6,4 +6,5 @@
     color: #000000;
     overflow: hidden;
     box-sizing: border-box;
+    position: relative;
 }

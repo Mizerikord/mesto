@@ -1,3 +1,13 @@
+@keyframes fadeIn {
+    from { opacity: 1; }
+      to { opacity: 0;
+            visibility: hidden;  }
+}
+@keyframes fadeOut {
+    from { opacity: 0; }
+      to { opacity: 1;}
+}
+
 .popup{
     display: flex;
     justify-content: center;
@@ -9,4 +19,5 @@
     bottom: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeOut 1s;
 }

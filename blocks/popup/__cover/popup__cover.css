@@ -1,0 +1,7 @@
+.popup__cover{
+    display: flex;
+    flex-direction: column;
+    min-width: 282px;
+    position: relative;
+    max-width: 880px;
+}
