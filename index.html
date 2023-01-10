@@ -43,8 +43,7 @@
     <footer class="footer">
         <p lang="en" class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
-    <template id="popup-profile">
-        <section class="popup popup_opened">
+        <section class="popup popup_profile">
             <div class="popup__container">
                 <button type="button" class="popup__disable blackout" aria-label="закрыть редактор профиля"></button>
                 <h2 class="popup__header">Редактировать профиль</h2>
@@ -55,29 +54,24 @@
                 </form>
             </div>
         </section>
-    </template>
-    <template id="popup-insert">
-        <section class="popup popup_opened">
+        <section class="popup popup_insert">
             <div class="popup__container">
                 <button type="button" class="popup__disable blackout" aria-label="закрыть редактор профиля"></button>
                 <h2 class="popup__header">Новое место</h2>
                 <form action="#" class="popup__form" name="попап">
-                    <input type="text" value="Название" placeholder="Название" class="popup__elem popup__elem_input_name" name="Имя">
-                    <input type="text" value="Ссылка на картинку" placeholder="Ссылка на картинку" class="popup__elem popup__elem_input_theme" name="Деятельность">
+                    <input type="text" value="название места" placeholder="Название" class="popup__elem popup__elem_input_name" name="Имя">
+                    <input type="text" value="ссылка" placeholder="Ссылка на картинку" class="popup__elem popup__elem_input_theme" name="Деятельность">
                     <input type="submit" value="Сохранить" class="popup__save-button" name="кнопка-сохранить">
                 </form>
             </div>
         </section>
-    </template>
-    <template id="popup-cover">
-        <section class="popup popup_opened">
+        <section class="popup popup_cover">
             <div class="popup__cover">
                 <button type="button" class="popup__disable blackout" aria-label="закрыть картинку"></button>
-                <img src="#" alt="Некая картинка" class="popup__cover-img">
+                <img src="#" alt="картинка" class="popup__cover-img">
                 <p class="popup__text"></p>
             </div>
         </section>
-    </template>
     <script src="./pages/script.js"></script>
 </body>
 </html>
