@@ -39,6 +39,7 @@ const cardPlace = document.querySelector('.cards__list');
 const card = document.querySelector('#card').content;
 const coverImg = popupCover.querySelector('.popup__cover-img');
 const coverText = popupCover.querySelector('.popup__text');
+const disablePopup = document.querySelectorAll('.popup__disable');
 
 //открытие-закрытие попа-па
 function openPopup(elem) {
@@ -48,36 +49,30 @@ function closePopup(elem) {
   elem.classList.remove('popup_opened');
 }
 
+//Открыть редактор профиля
 document.querySelector('.profile__editor').addEventListener('click', function () {
   popupName.value = profileName.textContent;
   popupTheme.value = profileTheme.textContent;
   openPopup(popupProfile);
 });
 
+//Обработать форму профиля
 popupProfile.querySelector('.popup__form').addEventListener('submit', function (event) {
   event.preventDefault();
   if (popupName.value || popupTheme.value !== '') {
     profileName.textContent = popupName.value;
     profileTheme.textContent = popupTheme.value;
-    event.target.reset();
     closePopup(popupProfile);
   }
 });
 
-popupProfile.querySelector('.popup__disable').addEventListener('click', () => closePopup(popupProfile));
-
 //Отрисовываем новую карточку
-
 function createCard(nameValue, linkValue) {
   const cardElem = card.querySelector('.card').cloneNode(true);
   const cardImage = cardElem.querySelector('.card__img');
   cardElem.querySelector('.card__title').textContent = nameValue;
   cardImage.src = linkValue;
-  return cardElem
-}
-
-function renderCards(nameValue, linkValue) {
-  const cardElem = createCard(nameValue, linkValue);
+  cardImage.alt = `Изображение места ${nameValue}`;
   //ставим лайк
   cardElem.querySelector('.card__like').addEventListener('click', function (event) {
     event.target.classList.toggle('card__like_active');
@@ -89,17 +84,20 @@ function renderCards(nameValue, linkValue) {
   //Попап во весь экран
   cardElem.querySelector('.card__img').addEventListener('click', () => {
     coverImg.src = linkValue;
-    //текст под картинкой-попапом
+    coverImg.alt = `Изображение места ${nameValue}`;
     const text = nameValue;
     coverText.textContent = text;
     openPopup(popupCover);
   });
+  return cardElem
+}
 
+function renderCards(nameValue, linkValue) {
+  const cardElem = createCard(nameValue, linkValue);
   cardPlace.prepend(cardElem);
 }
 
 //Выводим карточки из массива
-
 for (elem of initialCards) {
   renderCards(elem.name, elem.link);
 }
@@ -114,10 +112,10 @@ popupInsert.querySelector('.popup__form').addEventListener('submit', function (e
   closePopup(popupInsert);
 });
 
-popupInsert.querySelector('.popup__disable').addEventListener('click', () => closePopup(popupInsert));
-
-popupCover.querySelector('.popup__disable').addEventListener('click', () => closePopup(popupCover));
-
-
+disablePopup.forEach((close) => {
+  const nearElem = close.closest('.popup');
+  console.log(nearElem);
+  close.addEventListener('click', () => closePopup(nearElem));
+});
 
 
