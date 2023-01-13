@@ -39,7 +39,9 @@ const cardPlace = document.querySelector('.cards__list');
 const card = document.querySelector('#card').content;
 const coverImg = popupCover.querySelector('.popup__cover-img');
 const coverText = popupCover.querySelector('.popup__text');
-const disablePopup = document.querySelectorAll('.popup__disable');
+const closeButtons = document.querySelectorAll('.popup__disable');
+const profileForm = document.forms.profile;
+const insertForm = document.forms.insert;
 
 //открытие-закрытие попа-па
 function openPopup(elem) {
@@ -57,7 +59,7 @@ document.querySelector('.profile__editor').addEventListener('click', function ()
 });
 
 //Обработать форму профиля
-popupProfile.querySelector('.popup__form').addEventListener('submit', function (event) {
+profileForm.addEventListener('submit', function (event) {
   event.preventDefault();
   if (popupName.value || popupTheme.value !== '') {
     profileName.textContent = popupName.value;
@@ -82,11 +84,10 @@ function createCard(nameValue, linkValue) {
     event.target.closest('.card').remove();
   });
   //Попап во весь экран
-  cardElem.querySelector('.card__img').addEventListener('click', () => {
+  cardImage.addEventListener('click', () => {
     coverImg.src = linkValue;
     coverImg.alt = `Изображение места ${nameValue}`;
-    const text = nameValue;
-    coverText.textContent = text;
+    coverText.textContent = nameValue;
     openPopup(popupCover);
   });
   return cardElem
@@ -105,17 +106,14 @@ for (elem of initialCards) {
 //Добавление новой карточки
 document.querySelector('.profile__insert').addEventListener('click', () => openPopup(popupInsert));
 
-popupInsert.querySelector('.popup__form').addEventListener('submit', function (event) {
+insertForm.addEventListener('submit', function (event) {
   event.preventDefault();
   renderCards(name.value, link.value);
   event.target.reset();
   closePopup(popupInsert);
 });
 
-disablePopup.forEach((close) => {
-  const nearElem = close.closest('.popup');
-  console.log(nearElem);
-  close.addEventListener('click', () => closePopup(nearElem));
+closeButtons.forEach((close) => {
+  const nearestPopup = close.closest('.popup');
+  close.addEventListener('click', () => closePopup(nearestPopup));
 });
-
-
