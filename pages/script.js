@@ -1,30 +1,3 @@
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 const popupProfile = document.querySelector('.popup_profile');
 const popupInsert = document.querySelector('.popup_insert');
 const popupCover = document.querySelector('.popup_cover');
@@ -54,7 +27,7 @@ function openPopup(elem) {
 //закрытие попапа
 function closePopup(elem) {
   elem.classList.remove('popup_opened');
-  document.removeEventListener('keypress', addEscFunction);
+  document.removeEventListener('keyup', addEscFunction);
 }
 
 function addEscFunction(event) {
