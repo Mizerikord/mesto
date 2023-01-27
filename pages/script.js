@@ -44,15 +44,28 @@ const popupArray = document.querySelectorAll('.popup');
 const profileForm = document.forms.profile;
 const insertForm = document.forms.insert;
 
-//открытие-закрытие попа-па
+
+//открытиепопа-па
 function openPopup(elem) {
   elem.classList.add('popup_opened');
-  elem.addEventListener('click',  closeOverlayOut);
-}
+  document.addEventListener('keyup', addEscFunction);
+  }
+
+//закрытие попапа
 function closePopup(elem) {
   elem.classList.remove('popup_opened');
-  elem.removeEventListener('keypress', closeOverlayOut)
+  document.removeEventListener('keypress', addEscFunction);
 }
+
+function addEscFunction(event) {
+  event.preventDefault();
+  if (event.key === 'Escape' || event.keyCode === 27) {
+    const currentPopup = document.querySelector('.popup_opened')
+    closePopup(currentPopup);
+  }
+};
+
+
 
 //Открыть редактор профиля
 document.querySelector('.profile__editor').addEventListener('click', function () {
@@ -78,8 +91,6 @@ function addCardSbmt(event) {
   closePopup(popupInsert);
 }
 insertForm.addEventListener('submit', addCardSbmt);
-
-
 
 //Отрисовываем новую карточку
 function createCard(nameValue, linkValue) {
@@ -124,13 +135,9 @@ closeButtons.forEach((close) => {
   close.addEventListener('click', () => closePopup(nearestPopup));
 });
 
+popupArray.forEach((elem) => {
+  elem.addEventListener('click', (event) => {
+    closePopup(event.target);
+  });
+})
 
-
-function closeOverlayOut(event) {
-  closePopup(event.target);
-  document.addEventListener('keydown', function(evt){
-    if((evt.key === 'Escape' || evt.keyCode === 27)){
-      closePopup(event.target);
-    }
-}, true);
-}
