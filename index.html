@@ -47,10 +47,16 @@
             <div class="popup__container">
                 <button type="button" class="popup__disable blackout" aria-label="закрыть редактор профиля"></button>
                 <h2 class="popup__header">Редактировать профиль</h2>
-                <form action="#" class="popup__form" name="profile">
-                    <input type="text" value="Ваше имя" placeholder="Ваше имя" class="popup__elem popup__elem_input_name" name="Имя">
-                    <input type="text" value="Ваша деятельность" placeholder="Ваша деятельность" class="popup__elem popup__elem_input_theme" name="Деятельность">
-                    <input type="submit" value="Сохранить" class="popup__save-button" name="кнопка-сохранить">
+                <form action="#" class="form" name="profile" novalidate>
+                    <label class="form__box">
+                        <input id="name" class="form__elem form__elem_input_name" type="text" value="" placeholder="Ваше имя" name="name" minlength="2" maxlength="40" required>
+                        <span class="name-error form__elem-error"></span>
+                    </label>
+                    <label class="form__box">
+                        <input id="theme" class="form__elem form__elem_input_theme" type="text" value="" placeholder="Ваша деятельность" name="theme" minlength="2" maxlength="200" required>
+                        <span class="theme-error form__elem-error"></span>
+                    </label>
+                    <input type="submit" value="Сохранить" class="form__save-button" name="submit-button">
                 </form>
             </div>
         </section>
@@ -58,20 +64,27 @@
             <div class="popup__container">
                 <button type="button" class="popup__disable blackout" aria-label="закрыть редактор профиля"></button>
                 <h2 class="popup__header">Новое место</h2>
-                <form action="#" class="popup__form" name="insert">
-                    <input type="text" value="" placeholder="Название места" class="popup__elem popup__elem_input_name" name="Имя">
-                    <input type="text" value="" placeholder="Ссылка на картинку" class="popup__elem popup__elem_input_theme" name="Деятельность">
-                    <input type="submit" value="Сохранить" class="popup__save-button" name="кнопка-сохранить">
+                <form action="#" class="form" name="insert" novalidate>
+                    <label class="form__box">
+                        <input id="title" class="form__elem form__elem_input_name" type="text" value="" placeholder="Название" name="title" minlength="2" maxlength="30" required>
+                        <span class="title-error form__elem-error"></span>
+                    </label>
+                    <label class="form__box">
+                        <input id="url" class="form__elem form__elem_input_theme" type="url" value="" placeholder="Ссылка на картинку" name="url" required>
+                        <span class="url-error form__elem-error"></span>
+                    </label>
+                    <input type="submit" value="Создать" class="form__save-button" name="submit-button" disabled="disabled">
                 </form>
             </div>
         </section>
-        <section class="popup popup_cover">
+        <section class="popup popup_cover" aria-label="open image">
             <div class="popup__cover">
                 <button type="button" class="popup__disable blackout" aria-label="закрыть картинку"></button>
                 <img src="#" alt="Развернутое изображение места" class="popup__cover-img">
                 <p class="popup__text"></p>
             </div>
         </section>
+    <script src="./pages/validate.js"></script>
     <script src="./pages/script.js"></script>
 </body>
 </html>

@@ -31,24 +31,27 @@ const popupCover = document.querySelector('.popup_cover');
 const footer = document.querySelector('.footer');
 const profileName = document.querySelector('.profile__name');
 const profileTheme = document.querySelector('.profile__theme');
-const popupName = popupProfile.querySelector('.popup__elem_input_name');
-const popupTheme = popupProfile.querySelector('.popup__elem_input_theme');
-const name = popupInsert.querySelector('.popup__elem_input_name');
-const link = popupInsert.querySelector('.popup__elem_input_theme');
+const popupName = popupProfile.querySelector('.form__elem_input_name');
+const popupTheme = popupProfile.querySelector('.form__elem_input_theme');
+const designation = popupInsert.querySelector('.form__elem_input_name');
+const link = popupInsert.querySelector('.form__elem_input_theme');
 const cardPlace = document.querySelector('.cards__list');
 const card = document.querySelector('#card').content;
 const coverImg = popupCover.querySelector('.popup__cover-img');
 const coverText = popupCover.querySelector('.popup__text');
 const closeButtons = document.querySelectorAll('.popup__disable');
+const popupArray = document.querySelectorAll('.popup');
 const profileForm = document.forms.profile;
 const insertForm = document.forms.insert;
 
 //открытие-закрытие попа-па
 function openPopup(elem) {
   elem.classList.add('popup_opened');
+  elem.addEventListener('click',  closeOverlayOut);
 }
 function closePopup(elem) {
   elem.classList.remove('popup_opened');
+  elem.removeEventListener('keypress', closeOverlayOut)
 }
 
 //Открыть редактор профиля
@@ -59,14 +62,24 @@ document.querySelector('.profile__editor').addEventListener('click', function ()
 });
 
 //Обработать форму профиля
-profileForm.addEventListener('submit', function (event) {
+function saveFormData(event) {
   event.preventDefault();
-  if (popupName.value || popupTheme.value !== '') {
-    profileName.textContent = popupName.value;
-    profileTheme.textContent = popupTheme.value;
-    closePopup(popupProfile);
-  }
-});
+  profileName.textContent = popupName.value;
+  profileTheme.textContent = popupTheme.value;
+  closePopup(popupProfile);
+}
+
+profileForm.addEventListener('submit', saveFormData);
+
+function addCardSbmt(event) {
+  event.preventDefault();
+  renderCards(designation.value, link.value);
+  event.target.reset();
+  closePopup(popupInsert);
+}
+insertForm.addEventListener('submit', addCardSbmt);
+
+
 
 //Отрисовываем новую карточку
 function createCard(nameValue, linkValue) {
@@ -106,14 +119,18 @@ for (elem of initialCards) {
 //Добавление новой карточки
 document.querySelector('.profile__insert').addEventListener('click', () => openPopup(popupInsert));
 
-insertForm.addEventListener('submit', function (event) {
-  event.preventDefault();
-  renderCards(name.value, link.value);
-  event.target.reset();
-  closePopup(popupInsert);
-});
-
 closeButtons.forEach((close) => {
   const nearestPopup = close.closest('.popup');
   close.addEventListener('click', () => closePopup(nearestPopup));
 });
+
+
+
+function closeOverlayOut(event) {
+  closePopup(event.target);
+  document.addEventListener('keydown', function(evt){
+    if((evt.key === 'Escape' || evt.keyCode === 27)){
+      closePopup(event.target);
+    }
+}, true);
+}
