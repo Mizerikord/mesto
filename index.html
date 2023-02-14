@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <title>Место</title>
     <link rel="stylesheet" href="pages/index.css">
 </head>
+
 <body class="page">
     <header class="header">
         <img src="images/logo.svg" alt="Место" class="header__logo">
@@ -36,56 +38,59 @@
                             <button type="button" class="card__like" aria-label="сохранить"></button>
                         </div>
                     </li>
-                </template> 
+                </template>
             </ul>
         </section>
     </main>
     <footer class="footer">
         <p lang="en" class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
-        <section class="popup popup_profile">
-            <div class="popup__container">
-                <button type="button" class="popup__disable blackout" aria-label="закрыть редактор профиля"></button>
-                <h2 class="popup__header">Редактировать профиль</h2>
-                <form action="#" class="form" name="profile" novalidate>
-                    <label class="form__box">
-                        <input id="name" class="form__elem form__elem_input_name" type="text" value="" placeholder="Ваше имя" name="name" minlength="2" maxlength="40" required>
-                        <span class="name-error form__elem-error"></span>
-                    </label>
-                    <label class="form__box">
-                        <input id="theme" class="form__elem form__elem_input_theme" type="text" value="" placeholder="Ваша деятельность" name="theme" minlength="2" maxlength="200" required>
-                        <span class="theme-error form__elem-error"></span>
-                    </label>
-                    <input type="submit" value="Сохранить" class="form__save-button" name="submit-button">
-                </form>
-            </div>
-        </section>
-        <section class="popup popup_insert">
-            <div class="popup__container">
-                <button type="button" class="popup__disable blackout" aria-label="закрыть редактор профиля"></button>
-                <h2 class="popup__header">Новое место</h2>
-                <form action="#" class="form" name="insert" novalidate>
-                    <label class="form__box">
-                        <input id="title" class="form__elem form__elem_input_name" type="text" value="" placeholder="Название" name="title" minlength="2" maxlength="30" required>
-                        <span class="title-error form__elem-error"></span>
-                    </label>
-                    <label class="form__box">
-                        <input id="url" class="form__elem form__elem_input_theme" type="url" value="" placeholder="Ссылка на картинку" name="url" required>
-                        <span class="url-error form__elem-error"></span>
-                    </label>
-                    <input type="submit" value="Создать" class="form__save-button" name="submit-button" disabled="disabled">
-                </form>
-            </div>
-        </section>
-        <section class="popup popup_cover" aria-label="open image">
-            <div class="popup__cover">
-                <button type="button" class="popup__disable blackout" aria-label="закрыть картинку"></button>
-                <img src="#" alt="Развернутое изображение места" class="popup__cover-img">
-                <p class="popup__text"></p>
-            </div>
-        </section>
-        <script src="./pages/constants.js"></script>
-    <script src="./pages/validate.js"></script>
-    <script src="./pages/script.js"></script>
+    <section class="popup popup_profile">
+        <div class="popup__container">
+            <button type="button" class="popup__disable blackout" aria-label="закрыть редактор профиля"></button>
+            <h2 class="popup__header">Редактировать профиль</h2>
+            <form action="#" class="form" name="profile" novalidate>
+                <label class="form__box">
+                    <input id="name" class="form__elem form__elem_input_name" type="text" value=""
+                        placeholder="Ваше имя" name="name" minlength="2" maxlength="40" required>
+                    <span class="name-error form__elem-error"></span>
+                </label>
+                <label class="form__box">
+                    <input id="theme" class="form__elem form__elem_input_theme" type="text" value=""
+                        placeholder="Ваша деятельность" name="theme" minlength="2" maxlength="200" required>
+                    <span class="theme-error form__elem-error"></span>
+                </label>
+                <input type="submit" value="Сохранить" class="form__save-button" name="submit-button">
+            </form>
+        </div>
+    </section>
+    <section class="popup popup_insert">
+        <div class="popup__container">
+            <button type="button" class="popup__disable blackout" aria-label="закрыть редактор профиля"></button>
+            <h2 class="popup__header">Новое место</h2>
+            <form action="#" class="form" name="insert" novalidate>
+                <label class="form__box">
+                    <input id="title" class="form__elem form__elem_input_name" type="text" value=""
+                        placeholder="Название" name="title" minlength="2" maxlength="30" required>
+                    <span class="title-error form__elem-error"></span>
+                </label>
+                <label class="form__box">
+                    <input id="url" class="form__elem form__elem_input_theme" type="url" value=""
+                        placeholder="Ссылка на картинку" name="url" required>
+                    <span class="url-error form__elem-error"></span>
+                </label>
+                <input type="submit" value="Создать" class="form__save-button" name="submit-button" disabled="disabled">
+            </form>
+        </div>
+    </section>
+    <section class="popup popup_cover" aria-label="open image">
+        <div class="popup__cover">
+            <button type="button" class="popup__disable blackout" aria-label="закрыть картинку"></button>
+            <img src="#" alt="Развернутое изображение места" class="popup__cover-img">
+            <p class="popup__text"></p>
+        </div>
+    </section>
+    <script type="module" src="./pages/index.js"></script>
 </body>
+
 </html>
