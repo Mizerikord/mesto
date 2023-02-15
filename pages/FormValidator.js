@@ -4,6 +4,8 @@ export class FormValidator {
     constructor(config, checkForm) {
         this._config = config;
         this._checkForm = checkForm;
+        this._inputList = Array.from(checkForm.querySelectorAll(this._config.inputSelector));
+        this._submitBtn = this._checkForm.querySelector(this._config.submitButtonSelector);
     };
 
     _showInputError(errorElement, inputElement, errorMsg) {
@@ -18,20 +20,17 @@ export class FormValidator {
         errorElement.textContent = '';
     };
 
-    _deactivateBtn(checkForm) {
-        const submitBtn = checkForm.querySelector(this._config.submitButtonSelector);
-        submitBtn.classList.add(this._config.inactiveButtonClass);
-        submitBtn.setAttribute("disabled", "disabled");
+    _deactivateBtn() {
+        this._submitBtn.classList.add(this._config.inactiveButtonClass);
+        this._submitBtn.setAttribute("disabled", "disabled");
     };
 
     _setEventListeners = (checkForm) => {
-        const inputList = Array.from(checkForm.querySelectorAll(this._config.inputSelector));
-        const submitBtn = checkForm.querySelector(this._config.submitButtonSelector);
-        this._toggleButton(inputList, submitBtn);
-        inputList.forEach((anyInput) => {
+        this._toggleButton(this._inputList, this._submitBtn);
+        this._inputList.forEach((anyInput) => {
             anyInput.addEventListener('input', () => {
                 this._isValid(checkForm, anyInput);
-                this._toggleButton(inputList, submitBtn);
+                this._toggleButton(this._inputList, this._submitBtn);
             });
         });
     };
@@ -63,7 +62,7 @@ export class FormValidator {
 
     _startValid() {
         this._checkForm.addEventListener('submit', () => {
-            this._deactivateBtn(this._checkForm);
+            this._deactivateBtn();
         });
         this._setEventListeners(this._checkForm);
     };

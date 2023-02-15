@@ -1,16 +1,18 @@
 import { initialCards, config } from './constants.js'
-import { Card } from './card.js'
+import { Card } from './Card.js'
 import { FormValidator } from './FormValidator.js'
 
 initialCards.forEach((elem) => {
-  const card = new Card(elem, config);
-  const cardElem = card.generateCard();
-  deployImgOverlay(elem, cardElem);
-  config.cardPlace.prepend(cardElem);
+  config.cardPlace.prepend(addCard(elem));
 })
 
+function addCard(elem) {
+  const card = new Card(elem, config);
+  return card.generateCard();
+}
+
 //открытиепопа-па
-function openPopup(elem) {
+export function openPopup(elem) {
   elem.classList.add(config.popupOpened);
   document.addEventListener('keyup', addEscFunction);
 }
@@ -35,8 +37,6 @@ config.profileEditor.addEventListener('click', () => {
   config.popupName.value = config.profileName.textContent;
   config.popupTheme.value = config.profileTheme.textContent;
   openPopup(config.popupProfile);
-  const validator = new FormValidator(config, config.profileForm);
-  validator.enableValidation();
 });
 
 //Обработать форму профиля
@@ -62,20 +62,7 @@ function createCard(nameValue, linkValue) {
   const element = {};
   element.name = nameValue;
   element.link = linkValue;
-  const newCard = new Card(element, config);
-  const newCardElem = newCard.generateCard();
-  deployImgOverlay(element, newCardElem);
-  return newCardElem;
-}
-
-//развернуть попап места
-function deployImgOverlay(cardData, newCardElem) {
-  newCardElem.querySelector(config.cardImage).addEventListener('click', () => {
-    config.coverImg.src = cardData.link;
-    config.coverImg.alt = `Изображение места ${cardData.name}`;
-    config.coverText.textContent = cardData.name;
-    openPopup(config.popupCover);
-  });
+  return addCard(element);
 }
 
 function renderCards(nameValue, linkValue) {
@@ -87,8 +74,6 @@ function renderCards(nameValue, linkValue) {
 config.profileInsert.addEventListener('click', () => {
   openPopup(config.popupInsert)
 });
-const validator = new FormValidator(config, config.formAddCard);
-validator.enableValidation();
 config.closeButtons.forEach((button) => {
   const nearestPopup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(nearestPopup));
@@ -99,3 +84,9 @@ config.popups.forEach((elem) => {
     closePopup(event.target);
   });
 })
+
+const checkItems = [config.profileForm, config.formAddCard];
+checkItems.forEach((elem) => {
+  const validatorForms = new FormValidator(config, elem);
+  validatorForms.enableValidation();
+});
