@@ -55,5 +55,5 @@ export const config = {
     submitButtonSelector: '.form__save-button',
     inactiveButtonClass: 'form__save-button_inactive',
     inputErrorClass: 'form__elem_type_error',
-    errorClass: 'form__elem-error_active'
+    errorClass: 'form__elem-error_active',
 }
