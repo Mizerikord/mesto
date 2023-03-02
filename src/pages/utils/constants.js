@@ -28,7 +28,7 @@ export const initialCards = [
 export const config = {
     profileForm: document.forms.profile,
     formAddCard: document.forms.insert,
-    formSelector: document.querySelectorAll('.form'),
+    formSelector: ('.form'),
     popupProfile: document.querySelector('.popup_profile'),
     popupInsert: document.querySelector('.popup_insert'),
     popupCover: document.querySelector('.popup_cover'),
@@ -50,7 +50,7 @@ export const config = {
     cardImage: '.card__img',
     cardTitle: '.card__title',
     cardDelete: '.card__delete',
-    closeButtons: document.querySelectorAll('.popup__disable'),
+    closeButtons: ('.popup__disable'),
     inputSelector: '.form__elem',
     submitButtonSelector: '.form__save-button',
     inactiveButtonClass: 'form__save-button_inactive',
