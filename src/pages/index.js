@@ -8,55 +8,55 @@ import { UserInfo } from '../components/UserInfo.js'
 import { FormValidator } from '../components/FormValidator.js'
 
 //Открываем попап профиля
-const sampleEditor = new PopupWithForm({
+const popupProfileEdit = new PopupWithForm({
   popupSelector: config.popupProfile,
   handleFormSubmit: (inputsData) => {
     userData.setUserInfo(inputsData);
   }
 })
 
+//обрабатываем данные пользвоателя
 const userData = new UserInfo(config.profileName, config.profileTheme);
 config.profileEditor.addEventListener('click', () => {
-  sampleEditor.open();
+  popupProfileEdit.open();
   const data = userData.getUserInfo();
   config.popupName.value = data.name;
   config.popupTheme.value = data.theme;
 }
 );
-
-sampleEditor.setEventListeners();
-
-//Открываем попап карточки
-config.profileInsert.addEventListener('click', () => {
-  sampleInsert.open();
-}
-);
+popupProfileEdit.setEventListeners();
 
 //Добавление карточки
-const sampleInsert = new PopupWithForm({
-  popupSelector: config.popupInsert, handleFormSubmit: (inputsData) => {
-    const [title, src] = inputsData;
-    const item = [{ name: title.value, link: src.value }];
-    const newCard = new Section({
-      items: item,
-      renderer: (item) => {
-        const openCover = new PopupWithImage(item, config);
-        const card = new Card(item, config, {
-          handleCardClick: (cardImageElement) => {
-            cardImageElement.addEventListener('click', () => {
-              openCover.open();
-            });
-          }
-        });
-        return card.generateCard();
-      }
-    },
-      config.cardPlace
-    )
-    newCard.renderCards();
+
+const createCard = (cardData) => {
+  const card = new Card(cardData, { handleCardClick: (cardData) => { popupOpenCover.open(cardData) } }, config);
+  return card.generateCard();
+}
+
+const cardList = new Section({
+  items: initialCards,
+  renderer: createCard,
+},
+  config.cardPlace
+);
+
+cardList.renderCards();
+
+const popupInsertCard = new PopupWithForm({
+  popupSelector: config.popupInsert,
+  handleFormSubmit: (inputsData) => {
+    const card = createCard(inputsData);
+    cardList.addItem(card);
   }
 })
-sampleInsert.setEventListeners();
+
+popupInsertCard.setEventListeners();
+
+config.profileInsert.addEventListener('click', () => {
+  popupInsertCard.open();
+})
+
+const popupOpenCover = new PopupWithImage({ popupSelector: config.popupCover });
 
 //Запуск валидации
 const checkItems = [config.profileForm, config.formAddCard];
@@ -64,24 +64,3 @@ checkItems.forEach((elem) => {
   const validatorForms = new FormValidator(config, elem);
   validatorForms.enableValidation();
 });
-
-//Заливаем базу карточек
-const cardList = new Section({
-  items: initialCards,
-  renderer: (item) => {
-    const card = new Card(item, config, {
-      handleCardClick: (cardImageElement) => {
-        const openCover = new PopupWithImage(item, config)
-        cardImageElement.addEventListener('click', () => {
-          openCover.open();
-        });
-      }
-    });
-    return card.generateCard();
-  }
-},
-  config.cardPlace
-)
-
-cardList.renderCards();
-

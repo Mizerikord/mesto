@@ -1,8 +1,7 @@
-// import { openPopup } from '../pages/utils/utils.js'
 export class Card {
-  constructor(item, config, handleCardClick) {
+  constructor(cardData, { handleCardClick }, config ) {
     this._handleCardClick = handleCardClick;
-    this._element = item;
+    this._cardData = cardData;
     this._template = config.card;
     this._config = config;
   }
@@ -20,16 +19,18 @@ export class Card {
     this._cardElement.querySelector(this._config.cardDelete).addEventListener('click', () => {
       this._cardElement.remove();
     });
-    this._handleCardClick.handleCardClick(this._cardImageElement);
+    this._cardImageElement.addEventListener('click', () => {
+      this._handleCardClick(this._cardData);
+    })
   }
 
   generateCard() {
     this._cardElement = this._getTemplate();
     this._cardImageElement = this._cardElement.querySelector(this._config.cardImage);
-    this._cardElement.querySelector(this._config.cardTitle).textContent = this._element.name;
-    this._cardImageElement.src = this._element.link;
-    this._cardImageElement.alt = `Изображение места ${this._element.name}`;
-    this._setEventListeners(this._cardImageElement);
+    this._cardElement.querySelector(this._config.cardTitle).textContent = this._cardData.name;
+    this._cardImageElement.src = this._cardData.link;
+    this._cardImageElement.alt = `Изображение места ${this._cardData.name}`;
+    this._setEventListeners();
     return this._cardElement;
   }
 }

@@ -1,7 +1,7 @@
 export const initialCards = [
     {
         name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+        link: 'https://s.mediasalt.ru/cache/content/data/images/262/262203/original.jpg'
     },
     {
         name: 'Челябинская область',
@@ -21,36 +21,35 @@ export const initialCards = [
     },
     {
         name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+        link: 'https://vsegda-pomnim.com/uploads/posts/2022-03/1648753820_2-vsegda-pomnim-com-p-ozero-baikal-zima-foto-2.jpg'
     }
 ];
 
 export const config = {
     profileForm: document.forms.profile,
     formAddCard: document.forms.insert,
-    formSelector: ('.form'),
-    popupProfile: document.querySelector('.popup_profile'),
-    popupInsert: document.querySelector('.popup_insert'),
-    popupCover: document.querySelector('.popup_cover'),
+    formSelector: '.form',
+    popupProfile: '.popup_profile',
+    popupInsert: '.popup_insert',
+    popupCover: '.popup_cover',
     popupOpened: 'popup_opened',
-    popups: document.querySelectorAll('.popup'),
+    popups: '.popup',
     profileEditor: document.querySelector('.profile__editor'),
     profileInsert: document.querySelector('.profile__insert'),
-    profileName: document.querySelector('.profile__name'),
-    profileTheme: document.querySelector('.profile__theme'),
+    profileName: '.profile__name',
+    profileTheme: '.profile__theme',
     popupName: document.querySelector('.form__elem_input_name'),
     popupTheme: document.querySelector('.form__elem_input_theme'),
-    link: document.querySelector('.popup_insert').querySelector('.form__elem_input_theme'),
-    cardPlace: document.querySelector('.cards__list'),
-    coverImg: document.querySelector('.popup_cover').querySelector('.popup__cover-img'),
-    coverText: document.querySelector('.popup_cover').querySelector('.popup__text'),
+    cardPlace: '.cards__list',
+    coverImg: '.popup__cover-img',
+    coverText: '.popup__text',
     card: document.querySelector('#card'),
     cardLike: '.card__like',
     cardLikeActive: 'card__like_active',
     cardImage: '.card__img',
     cardTitle: '.card__title',
     cardDelete: '.card__delete',
-    closeButtons: ('.popup__disable'),
+    closeButtons: '.popup__disable',
     inputSelector: '.form__elem',
     submitButtonSelector: '.form__save-button',
     inactiveButtonClass: 'form__save-button_inactive',

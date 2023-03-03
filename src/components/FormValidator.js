@@ -23,18 +23,18 @@ export class FormValidator {
         this._submitBtn.setAttribute("disabled", "disabled");
     };
 
-    _setEventListeners = (checkForm) => {
+    _setEventListeners = () => {
         this._toggleButton(this._inputList, this._submitBtn);
         this._inputList.forEach((anyInput) => {
             anyInput.addEventListener('input', () => {
-                this._isValid(checkForm, anyInput);
+                this._isValid(anyInput);
                 this._toggleButton(this._inputList, this._submitBtn);
             });
         });
     };
 
-    _isValid(checkForm, inputElement) {
-        const errorElement = checkForm.querySelector(`.${inputElement.id}-error`);
+    _isValid(inputElement) {
+        const errorElement = this._checkForm.querySelector(`.${inputElement.id}-error`);
         if (!inputElement.validity.valid) {
             this._showInputError(errorElement, inputElement, inputElement.validationMessage);
         } else {
@@ -42,27 +42,26 @@ export class FormValidator {
         }
     };
 
-    _toggleButton(inputList, buttonElement) {
-        if (this._checkValid(inputList)) {
-            buttonElement.classList.add(this._config.inactiveButtonClass);
-            buttonElement.setAttribute("disabled", "disabled");
+    _toggleButton() {
+        if (this._checkValid()) {
+            this._deactivateBtn();
         } else {
-            buttonElement.classList.remove(this._config.inactiveButtonClass);
-            buttonElement.removeAttribute("disabled");
+            this._submitBtn.classList.remove(this._config.inactiveButtonClass);
+            this._submitBtn.removeAttribute("disabled");
         };
     };
 
-    _checkValid(inputList) {
-        return inputList.some((inputElem) => {
+    _checkValid() {
+        return this._inputList.some((inputElem) => {
             return !inputElem.validity.valid;
         });
     };
 
     _startValid() {
-        this._checkForm.addEventListener('submit', () => {
+        this._checkForm.addEventListener('reset', () => {
             this._deactivateBtn();
         });
-        this._setEventListeners(this._checkForm);
+        this._setEventListeners();
     };
 
     enableValidation() {
