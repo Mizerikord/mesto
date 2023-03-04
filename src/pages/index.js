@@ -57,6 +57,7 @@ config.profileInsert.addEventListener('click', () => {
 })
 
 const popupOpenCover = new PopupWithImage({ popupSelector: config.popupCover });
+popupOpenCover.setEventListeners();
 
 //Запуск валидации
 const checkItems = [config.profileForm, config.formAddCard];

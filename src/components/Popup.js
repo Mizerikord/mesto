@@ -5,8 +5,6 @@ export default class Popup {
         this._popupCurrent = document.querySelector(popupSelector);
         this._handleEscClose = this._handleEscClose.bind(this);
         this._config = config;
-        this._coverImgSelector = this._config.coverImg;
-        this._coverTextSelector = this._config.coverText
     }
 
     _handleEscClose(event) {

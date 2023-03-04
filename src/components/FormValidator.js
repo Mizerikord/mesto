@@ -24,11 +24,11 @@ export class FormValidator {
     };
 
     _setEventListeners = () => {
-        this._toggleButton(this._inputList, this._submitBtn);
+        this._toggleButton();
         this._inputList.forEach((anyInput) => {
             anyInput.addEventListener('input', () => {
                 this._isValid(anyInput);
-                this._toggleButton(this._inputList, this._submitBtn);
+                this._toggleButton();
             });
         });
     };
