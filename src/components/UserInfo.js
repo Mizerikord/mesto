@@ -5,12 +5,12 @@ export class UserInfo{
     }
 
     getUserInfo(){
-        return {name:this._userName.textContent, theme:this._userInfo.textContent}
+        return {name:this._userName.textContent, about:this._userInfo.textContent}
     }
 
     setUserInfo(inputsData){
-        const {name, theme} = inputsData;
+        const {name, about} = inputsData;
         this._userName.textContent = name;
-        this._userInfo.textContent = theme;
+        this._userInfo.textContent = about;
     }
 }
