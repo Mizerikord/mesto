@@ -8,6 +8,10 @@ export class UserInfo{
         return {name:this._userName.textContent, about:this._userInfo.textContent}
     }
 
+    setUserAvatar(avatarElem, avatar){
+        avatarElem.src = avatar;
+    }
+
     setUserInfo(inputsData){
         const {name, about} = inputsData;
         this._userName.textContent = name;
