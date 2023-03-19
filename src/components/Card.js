@@ -34,10 +34,14 @@ export class Card {
       this._handleCardClick(this._cardData);
     })
   }
-
+  
   _getMyLike(){
     const even = (element) => element._id === this._currentUserId;
     return this._cardData.likes.some(even);
+  }
+
+  setLikeChange(){
+    this._cardLikeElement.classList.toggle(this._config.cardLikeActive)
   }
 
   setDeleteCard(cardToDelete){

@@ -19,15 +19,16 @@ const popupProfileEdit = new PopupWithForm({
     api.patchProfile(inputsData)
       .then((patchUser) => {
         userData.setUserInfo(patchUser);
+        popupProfileEdit.close()
       })
       .catch((err) => { console.log(err) })
-      .finally(() => { popupProfileEdit.close() })
+      .finally(() => { popupProfileEdit.resetPreloadBtn() })
   }
 })
 
 
 //обрабатываем данные пользвоателя
-const userData = new UserInfo(config.profileName, config.profileAbout);
+const userData = new UserInfo(config.profileAvatar, config.profileName, config.profileAbout);
 config.profileEditor.addEventListener('click', () => {
   popupProfileEdit.open();
   const data = userData.getUserInfo();
@@ -49,7 +50,7 @@ Promise.all([
     currentUserId = userInfo._id;
     const inputsData = { name: userInfo.name, about: userInfo.about, userAvatar: userInfo.avatar };
     userData.setUserInfo(inputsData);
-    userData.setUserAvatar(config.profileAvatar, inputsData.userAvatar);
+    userData.setUserAvatar(inputsData.userAvatar);
     const cardOrder = cards.reverse();
     cardList.renderCards(cardOrder)
   })
@@ -61,10 +62,11 @@ const popupAvatarEditor = new PopupWithForm({
   handleFormSubmit: () => {
     api.patchAvatarUser(config.avatarInputLink.value)
       .then((res) => {
-        userData.setUserAvatar(config.profileAvatar, res.avatar);
+        userData.setUserAvatar(res.avatar);
+        popupAvatarEditor.close();
       })
       .catch((err) => { console.log(err) })
-      .finally(() => { popupAvatarEditor.close(); })
+      .finally(() => { popupAvatarEditor.resetPreloadBtn() })
   }
 })
 popupAvatarEditor.setEventListeners();
@@ -85,25 +87,24 @@ const createCard = (cardData) => {
     },
     //Добавляем логику лайка
     handleLikeClick: (likeElement, likeActive, templateLike, cardData) => {
-      function likeToggle() { likeElement.classList.toggle(likeActive) };
       if (likeElement.classList.contains(likeActive)) {
         api.deleteLikeCard(cardData)
-          .then((card) => {
-            likeToggle();
-            if (card.likes.length === 0) {
+          .then((res) => {
+            card.setLikeChange();
+            if (res.likes.length === 0) {
               templateLike.textContent = '';
             }
             else {
-              templateLike.textContent = card.likes.length;
+              templateLike.textContent = res.likes.length;
             }
           })
           .catch((err) => { console.log(err) })
       }
       else {
         api.makeLikeCard(cardData)
-          .then((card) => {
-            likeToggle();
-            templateLike.textContent = card.likes.length
+          .then((res) => {
+            card.setLikeChange();
+            templateLike.textContent = res.likes.length;
           })
           .catch((err) => { console.log(err) })
       }
@@ -126,9 +127,10 @@ const popupInsertCard = new PopupWithForm({
     api.postNewCard(inputsData)
       .then((res) => {
         cardList.renderCards([res]);
+        popupInsertCard.close();
       })
       .catch((err) => { console.log(err) })
-      .finally(() => { popupInsertCard.close() })
+      .finally(() => { popupInsertCard.resetPreloadBtn() })
   }
 })
 
@@ -142,9 +144,10 @@ const popupCardDelete = new PopupWithConfirmation({
     api.deleteMyCard(cardData)
       .then(() => {
         setDeleteCard(cardElement);
+        popupCardDelete.close();
       })
       .catch((err) => { console.log(err) })
-      .finally(() => { popupCardDelete.close() })
+      .finally(() => { popupCardDelete.resetPreloadBtn() })
   }
 });
 

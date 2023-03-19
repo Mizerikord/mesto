@@ -8,24 +8,27 @@ export class PopupWithConfirmation extends Popup {
         this._submitBtn = this._submitForm.querySelector(this._config.submitButtonSelector);
     }
 
-    setSuccessHandler(cardData, cardElement, setDeleteCard) {
+    setSuccessHandler(itemEData, itemElement, setDeleteItem) {
         //Трансляция данных в сабмит и карточки для удаления
-        this._setDeleteCard = setDeleteCard;
-        this._cardData = cardData;
-        this._cardElement = cardElement;
+        this._setDeleteItem = setDeleteItem;
+        this._itemEData = itemEData;
+        this._itemEElement = itemElement;
       }
 
     setEventListeners() {
         super.setEventListeners();
         this._submitForm.addEventListener('submit', (event) => {
             event.preventDefault();
-            this._handleFormSubmit( this._cardData, this._cardElement, this._setDeleteCard);
+            this._handleFormSubmit( this._itemEData, this._itemEElement, this._setDeleteItem);
             this._submitBtn.value = this._submitBtn.dataset.alterText;
         })
     }
 
-    close() {
+    resetPreloadBtn(){
         this._submitBtn.value = this._submitBtn.dataset.default;
+    }
+
+    close() {
         super.close();
     }
 

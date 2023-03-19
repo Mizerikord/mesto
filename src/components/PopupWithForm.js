@@ -28,9 +28,12 @@ export class PopupWithForm extends Popup {
         })
     }
 
+    resetPreloadBtn(){
+        this._submitBtn.value = this._submitBtn.dataset.default;
+    }
+
     close() {
         this._submitForm.reset();
-        this._submitBtn.value = this._submitBtn.dataset.default;
         super.close();
     }
 }
